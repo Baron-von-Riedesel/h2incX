@@ -1,0 +1,106 @@
+
+ 01/05: V0.80: first pre-release
+ 01/05: V0.81: prototypes with qualifier __declspec(dllimport) will use
+               IAT now (call dword ptr [_imp__xxx]).
+ 01/05: V0.82: some bugfixes
+ 01/05: V0.83: more bugfixes
+ 01/05: V0.84: fixed a memory allocation error
+ 01/05: V0.85: bit fields without names supported
+ 01/05: V0.86: size-safe bitfields with -r option
+ 01/05: V0.87: h2incXd was linked wrong. bitfields created wrong
+ 01/05: V0.88: [alignment] section added to h2incX.ini
+ 01/05: V0.89: adding structures to section [structure names] now only
+               required for externally defined structures.
+ 01/05: V0.90: [Known Macros] in h2incX.ini changed to string pairs!
+               Added new cmdline switch -i (old -i renamed to -y!) for
+               nested processing of header files.
+ 01/05: V0.91: -I option added.
+               -S option added.
+               h2incX remembers macros defined in the source, so only
+               external macros have to be added to [Known Macros] section
+ 01/05: V0.92: "enum {}" (without typedef) now converted (VARENUM in wtypes.h)
+ 01/05: V0.93: "COM" includes can be translated now, at least the C syntax
+               part. bugfix: macro invokations in EQU lines sometimes lost
+               their braces. A simple GUI sample (sample2) added. -e option
+               added.
+ 01/05: V0.94: MIDL generated macros for virtual function access in C
+               (COBJMACROS) are now converted to MASM macros.
+               COM server sample (simplestserver) added.
+               Function pointers as parameters in (virtual) function pointer
+               declarations now handled correctly (method IViewObject::Draw
+               in oleidl.h). DirectDraw sample added.
+ 01/05: V0.95: bugfix: '/' in source may have been interpreted as begin of
+               a comment. Method names in STDMETHOD macro checked for reserved
+               words. C++ reserved words 'public', 'private', 'operator' and
+               'friend' now tolerated.
+ 01/05: V0.96: bugfix: expressions in enums may have been interpreted as
+               function pointers. bugfix: floating point constants now 
+               recognized. D3D includes added.
+ 01/05: V0.97: no more invalid typedefs when translating "forward"
+               declarations of MIDL generated includes. Binary searches
+               are used now, so h2incX will run faster for large header files.
+ 01/05: V0.98: bugfix: externdefs were created wrong in version 0.97!
+               bugfix: missing includes for simplestserver sample added.
+               translated OLECTL.INC and OCIDL.INC added to Include subdir.
+ 01/05: V0.99: bugfix: VARIANT in OAIDL.INC defined wrong.
+ 01/05: V0.99.1: (U)LARGE_INTEGER definitions in winnt.h now handled correctly
+               bugfix: preprocessor commands now recognized when there are 
+               spaces between '#' and the command.
+ 01/05: V0.99.2: bugfix: enums without name ("enum {...};") caused an access
+               violation. bugfix: h2incX didn't recognize end of a comment if
+               comment had pattern "/* ... /* ... */". COMMCTRL.INC, 
+               WININET.INC and RICHEDIT.INC added to Include subdir.
+ 02/05: V0.99.3: Handling of string literals improved.
+               bugfix: STDMETHOD parameters on succeeding lines were skipped.
+               Win32 includes and samples now supplied in an own package at
+               http://www.japheth.de/Download/win32inc.zip.
+ 02/05: V0.99.4: bugfix: some structure names added to [Alignment] section in
+               h2incX.ini. Cmdline option -p added.
+               bugfix: __declspec(...) now analyzed correctly
+ 02/05: V0.99.5: Cmdline option -t added.
+               bugfix: function pointers as function parameters in prototypes
+               now recog
+ 02/05: V0.99.6: now less equates defined as text literals (<>). Nameless
+               structure members in structures recognized. Structures without
+               names ["typedef struct {...} * pStructPtr"] now handled 
+               correctly.
+ 02/05: V0.99.7: keyword "class" now accepted. Some very preliminary C++ name
+               decorating code added (VC).
+ 02/05: V0.99.8: cmdline switch -Wn added (so switch -e could be deleted).
+               bugfix: empty continuation lines weren't recognized.
+               bugfix: pointer types were added to structure symbol table
+ 02/05: V0.99.9: Warning displayed (-W1) if macro/equate is a reserved word.
+               Warning displayed (-W2) if macro parameter is a reserved word.
+               Rudimentary support for virtual base classes and virtual 
+               function tables. Keyword 'static' recognized.
+ 02/05: V0.99.10: bugfix: NOT is invalid in if/elseif expressions, replaced
+               by "0 eq". cmdline switch -d extended, makes switch -g 
+               superfluous. Optionally declaring prototypes with @DefProto
+               macro added. "#pragma message()" now converted to %echo, and
+               "#error" converted to .err.
+ 02/05: V0.99.11: bugfix: declaration "struct tagname membername;" in
+               structures was converted wrong (winsock.h, sin_addr).
+ 02/05: V0.99.12: bugfix: bugfix of V0.99.11 wasn't satisfactory, in fact
+               introduced another, severe bug.
+ 02/05: V0.99.13: interface vtable entries of MIDL created header files now
+               described with STDMETHOD macro, thus reducing size and
+               increasing readability of INC file. 
+ 02/05: V0.99.14: bugfix: COBJMACROS for interface names beginning with "_" 
+               didn't work (ADOINT.H)
+ 09/05: V0.99.15: some bugfixes
+ 09/05: V0.99.16: version 0.99.15 wrote the output file in the directory of
+               the input files if option -o was omitted.
+ 01/06: V0.99.17: cmdline switches used when h2incX was launched now copied
+               to the include file header.
+ 07/06: V0.99.18: -e cmdline option added.
+ 04/07: V0.99.19: copyright message adjusted so it is more clear that
+               the copyright is not intended for the created include file.
+               message "no items for .DEF file" now is only displayed if
+               warning level is > 2.
+ 03/09: V0.99.20: DOS version now created using HX's DOS-PE feature, it's
+               a stand-alone binary. Syntax
+                 typedef <simple_type> <new_type>[elements];
+               now converted to a structure instead of a typedef.
+ 08/22: V0.99.21: WinInc dependency removed, now just needs HX.
+
+
